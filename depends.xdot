@@ -1,0 +1,52 @@
+digraph python{
+	subgraph cluster_pythoninternals{
+		print -> "internal_framework"
+		range -> "internal_framework"
+		label = "internals"
+	}
+	
+	subgraph cluster_screen{
+		pushp -> scnmem [color=green]
+		pushp -> updscn [color=red]
+		pushp -> popp [color=red]
+		clrscn -> scnmem [color=green]
+		peekp -> scnmem [color=green]
+		pescnmem -> scnmem [color=green]
+		popp -> scnmem [color=red]
+		popp -> scnmem [color=green]
+		updscn -> cls [color=red]
+		updscn -> scnmem [color=green]
+		updscn -> pescnmem [color=red]
+		updscn -> peekp [color=red]
+		pusht -> pushp [color=red]
+		pusht -> refscn [color=red]
+		label = "screen.py"
+		kscnpipe -> getkey [color=red]
+		kscnpipe -> pushp [color=red]
+		kscnpipe -> popp [color=red]
+		apeek -> peekp [color=red]
+		
+	}
+	
+	subgraph cluster_modules {
+		label = "modules"
+		os -> {sys, abc, stat} -> internal_framework
+		keyboard -> {"__future__", re, itertools, collections, threading, time}
+		re -> {enum, sre_compile, sre_parse, functools}
+		enum -> sys
+		sre_compile -> {_sre, sre_parse, sre_constants}
+		sre_parse -> sre_constants
+		functools -> {abc, collections, reprlib, _thread, types}
+		collections -> {sys, itertools, keyword, operator, reprlib, _weakref}
+		{time, itertools, _thread, builtins} -> internal_framework
+		operator -> builtins
+		reprlib -> {builtins, itertools, _thread}
+	}
+	updscn -> range [color=red]
+	cls -> print [color=red]
+	cls -> os [color=red]
+	cls -> os [color=green]
+	updscn -> print [color=red]
+	getkey -> keyboard
+	apeek -> range [color=red]
+}
