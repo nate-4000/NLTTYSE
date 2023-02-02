@@ -57,15 +57,16 @@ def updscn():
     """Updates the screen."""
     cls()
     global scnmem
+    l = ""
     for y in range(0, sx):
-        l = ""
         for x in range(0, sy):
             if pescnmem(x, y):
                 d = peekp(x, y)
                 l += d
             else:
                 l += " "
-        print(l)
+        l += "\n"
+    print(l)
 def pusht(x, y, t, u = True):
     """Pushes text to the screen. \"u\" is the update flag."""
     lt = list(t)
