@@ -107,7 +107,7 @@ def kscnpipe(x, y, l=64):
             offset = abs(offset)
         if offset >= l:
             return
-def apeek(x, y, le, pn):
+def apeek(x, y, le, pn=False):
     """Peeks an area of the screen. Good for getting what the user typed using \"kscnpipe()\". PN flag provided for compatiblity."""
     out = ""
     for i in range(le):

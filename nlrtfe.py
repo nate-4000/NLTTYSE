@@ -1,4 +1,6 @@
-import sys, os, screen, threading, time
+import sys, os, screen
+screen.sx = 32
+screen.sy = 64
 def current_path():
     return os.path.abspath(os.sep)
 def putfiles(cur_path : str):
@@ -27,7 +29,7 @@ while True:
         putfiles(path)
     elif d == "c":
         screen.kscnpipe(0, 31)
-        npath = screen.apeek(0, 31, 64, False).strip()
+        npath = screen.apeek(0, 31, 64).strip()
         try:
             os.listdir(npath)
             path = npath
@@ -39,7 +41,7 @@ while True:
         screen.apop(0,31,64)
     elif d == "r":
         screen.kscnpipe(0, 31)
-        npath = path + screen.apeek(0, 31, 64, False).strip() + os.sep
+        npath = path + screen.apeek(0, 31, 64).strip() + os.sep
         try:
             os.listdir(npath)
             path = npath

@@ -1,5 +1,8 @@
 import screen
 
+screen.sy = 32
+screen.sx = 20
+
 screen.pusht(0,0, "----------------------", False)
 screen.pusht(0,1, "|                    |", False)
 screen.pusht(0,2, "----------------------", False)
