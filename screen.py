@@ -14,11 +14,11 @@ import os
 import keyboard
 def cls():
     """Clears the terminal on most systems."""
-    print("\033[H\033[J")
     if os.name == "nt":
         os.system("cls")
     else:
-        os.system("clear")
+        print("\033[2J\033[H")
+        #os.system("clear") # IF ANSI'ING IT DONT WORK UNCOMMENT IT AND RECOMPILER KERNAL #(note from other dev, dont, too much work and most people are stupid) 
 def pushp(x, y, t="\u2588", r=True):
     """Pushes a pixel to the screen."""
     global scnmem
